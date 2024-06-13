@@ -1,0 +1,11 @@
+out
+dist
+node_modules
+.vscode-test/
+*.vsix
+*.code-workspace
+*.pem
+package-lock.json
+yarn.lock
+input/*
+output/*

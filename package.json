@@ -1,0 +1,12 @@
+{
+  "name": "ts-texture-packing",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "package": "node pixi-packer.mjs --input=input --output=output"
+  },
+  "devDependencies": {
+    "free-tex-packer-core": "^0.3.4"
+  }
+}
