@@ -1,5 +1,5 @@
 # pixi-packer
-free-tex-packer-core example
+`free-tex-packer-core` based example
 
 ## Usage
 * For each atlas create the folder (inside the `input` folder) named by `atlas name` with textures.
@@ -17,4 +17,3 @@ node pixi-packer.mjs -m --input=input --output=output
 * `-m` - do minify atlas
 * `--pngQualityMin` - min png quality for minification (default 0.6)
 * `--pngQualityMax` - max png quality for minification (default 1)
-* 
