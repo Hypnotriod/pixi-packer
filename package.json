@@ -4,9 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "package": "node pixi-packer.mjs --input=input --output=output"
+    "package": "node pixi-packer.mjs --input=input --output=output",
+    "package-minify": "node pixi-packer.mjs -m --input=input --output=output"
   },
   "devDependencies": {
-    "free-tex-packer-core": "^0.3.4"
+    "free-tex-packer-core": "^0.3.4",
+    "imagemin": "^9.0.0",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-pngquant": "^10.0.0"
   }
 }

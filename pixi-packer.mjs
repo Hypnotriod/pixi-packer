@@ -1,4 +1,7 @@
 import texturePacker from "free-tex-packer-core";
+import imagemin from "imagemin";
+import imageminJpegtran from "imagemin-jpegtran";
+import imageminPngquant from "imagemin-pngquant";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -69,7 +72,11 @@ if (!inputFolder || !outputFolder) {
 const atlasPadding = args.padding === undefined ? 1 : args.padding;
 const atlasWidth = args.width === undefined ? 2048 : args.width;
 const atlasHeight = args.height === undefined ? 2048 : args.height;
+const minify = Boolean(args.m);
+const pngQualityMin = args.pngQualityMin === undefined ? 0.6 : args.pngQualityMin;
+const pngQualityMax = args.pngQualityMax === undefined ? 1 : args.pngQualityMax;
 
+// makeAtlas
 scanFolders(inputFolder).forEach(atlasFolder => {
     const options = {
         textureName: atlasFolder,
@@ -86,4 +93,15 @@ scanFolders(inputFolder).forEach(atlasFolder => {
         prependFolderName: true,
     };
     makeAtlas(path.join(inputFolder, atlasFolder), outputFolder, options);
+});
+
+// minify
+minify && await imagemin([`${outputFolder}/*.{jpg,png}`], {
+    destination: outputFolder,
+    plugins: [
+        imageminJpegtran(),
+        imageminPngquant({
+            quality: [pngQualityMin, pngQualityMax],
+        })
+    ]
 });
