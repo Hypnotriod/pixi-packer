@@ -55,11 +55,11 @@ const makeAtlas = (inputFolder, outputFolder, options) => {
     texturePacker(images, options, (files, error) => {
         if (error) {
             console.error("Packaging failed: ", error);
-        } else {
-            for (let item of files) {
-                const fileName = path.join(outputFolder, item.name);
-                fs.writeFileSync(fileName, item.buffer);
-            }
+            return;
+        }
+        for (let item of files) {
+            const fileName = path.join(outputFolder, item.name);
+            fs.writeFileSync(fileName, item.buffer);
         }
     });
 }
