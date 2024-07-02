@@ -9,9 +9,10 @@ const parseArgs = () =>
     process.argv.reduce((args, arg) => {
         if (arg.slice(0, 2) === "--") {
             const longArg = arg.split("=");
-            const longArgFlag = longArg[0].slice(2);
-            const longArgValue = longArg.length > 1 ? longArg[1] : true;
-            args[longArgFlag] = longArgValue;
+            const flag = longArg[0].slice(2);
+            const value = longArg.length > 1 ? longArg[1] : true;
+            const numericValue = parseFloat(value);
+            args[flag] = !isNaN(numericValue) ? numericValue : value;
         } else if (arg[0] === "-") {
             const flags = arg.slice(1).split("");
             flags.forEach((flag) => {
@@ -69,12 +70,12 @@ const outputFolder = args.output;
 if (!inputFolder || !outputFolder) {
     console.error("Some of the required parameters are missing");
 }
-const atlasPadding = args.padding === undefined ? 1 : args.padding;
-const atlasWidth = args.width === undefined ? 2048 : args.width;
-const atlasHeight = args.height === undefined ? 2048 : args.height;
-const minify = Boolean(args.m);
-const pngQualityMin = args.pngQualityMin === undefined ? 0.6 : args.pngQualityMin;
-const pngQualityMax = args.pngQualityMax === undefined ? 1 : args.pngQualityMax;
+const atlasPadding = args.padding ?? 1;
+const atlasWidth = args.width ?? 2048;
+const atlasHeight = args.height ?? 2048;
+const minify = Boolean(args.minify);
+const pngQualityMin = args.qmin ?? 0.6;
+const pngQualityMax = args.qmax ?? 1;
 
 // makeAtlas
 scanFolders(inputFolder).forEach(atlasFolder => {
