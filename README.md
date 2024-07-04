@@ -14,6 +14,6 @@ node pixi-packer.mjs --minify --input=input --output=output
 * `--padding` - atlas padding (default 1)
 * `--width` - atlas max width (default 2048)
 * `--height` - atlas max height (default 2048)
-* `--minify` - minify atlas
+* `--minify` or `-m` - minify atlas
 * `--qmin` - min png quality for minification (default 0.6)
 * `--qmax` - max png quality for minification (default 1)

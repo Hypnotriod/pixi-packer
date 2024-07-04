@@ -73,7 +73,7 @@ if (!inputFolder || !outputFolder) {
 const atlasPadding = args.padding ?? 1;
 const atlasWidth = args.width ?? 2048;
 const atlasHeight = args.height ?? 2048;
-const minify = Boolean(args.minify);
+const minify = Boolean(args.minify) || Boolean(args.m);
 const pngQualityMin = args.qmin ?? 0.6;
 const pngQualityMax = args.qmax ?? 1;
 
